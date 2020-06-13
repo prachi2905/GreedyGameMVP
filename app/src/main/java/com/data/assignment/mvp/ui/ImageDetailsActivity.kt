@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import com.data.assignment.AppConstatnt.AppConstant
 import com.data.assignment.R
 import com.data.assignment.databinding.ActivityImageDetailsBinding
-import com.data.assignment.databinding.ActivityImageLoaderBinding
 import com.data.imageloaderlib.ImageLoader.Companion.with
+import kotlinx.android.synthetic.main.toolbar_layout.view.*
 
 class ImageDetailsActivity : AppCompatActivity() {
     private var imageUrl: String? = null
@@ -15,7 +15,7 @@ class ImageDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_image_details)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_image_details)
         val extras = intent.extras
 
         if (extras != null) {
@@ -25,15 +25,15 @@ class ImageDetailsActivity : AppCompatActivity() {
         setDataOnUI()
     }
 
-    fun setDataOnUI()
-    {
+    fun setDataOnUI() {
         with(this).load(
             binding.imageView,
             imageUrl.toString()
         )
-      binding.clearActivity.setOnClickListener{
-          finish()
-      }
+        binding.toolBar.clear_activity.setOnClickListener {
+            finish()
+        }
     }
-
 }
+
+

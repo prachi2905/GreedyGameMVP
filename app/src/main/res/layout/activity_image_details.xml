@@ -7,42 +7,19 @@
     </data>
 
     <FrameLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".mvp.ui.ImageDetailsFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/text_header_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:minHeight="?attr/actionBarSize"
-            tools:layout_editor_absoluteX="150dp">
-
-            <ImageView
-                android:id="@+id/clear_activity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_back" />
-
-            <TextView
-                android:id="@+id/text_toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:text="Image Load"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp" />
-
-
-        </androidx.appcompat.widget.Toolbar>
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/toolbar_layout" />
 
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
+            android:padding="@dimen/ten_dp"
             android:src="@drawable/ic_launcher_background" />
 
     </FrameLayout>
