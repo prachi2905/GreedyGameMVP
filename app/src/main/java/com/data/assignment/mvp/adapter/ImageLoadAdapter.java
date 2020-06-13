@@ -16,8 +16,7 @@ import com.data.assignment.Model.Children;
 import com.data.assignment.R;
 import com.data.assignment.databinding.ImageUploadUiBinding;
 import com.data.assignment.mvp.ui.ImageDetailsActivity;
-import com.data.assignment.mvp.ui.ImageDetailsFragment;
-import com.data.assignment.mvp.ui.ImageLoaderActivity;
+
 import com.data.imageloaderlib.ImageLoader;
 
 import java.util.List;
