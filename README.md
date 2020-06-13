@@ -1,1 +1,1 @@
-# GreedyGameMVP
+# GreedyGameAssignment

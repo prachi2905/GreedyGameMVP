@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GreedyGameMVP.iml" filepath="$PROJECT_DIR$/GreedyGameMVP.iml" group="GreedyGameMVP" />
+      <module fileurl="file://$PROJECT_DIR$/Assignment.iml" filepath="$PROJECT_DIR$/Assignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imageloaderlib/imageloaderlib.iml" filepath="$PROJECT_DIR$/imageloaderlib/imageloaderlib.iml" />
     </modules>
   </component>
 </project>
