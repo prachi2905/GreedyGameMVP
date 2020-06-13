@@ -1,4 +1,4 @@
-package `in`.appybot.miidemo.image_loader
+package com.data.imageloaderlib
 
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat

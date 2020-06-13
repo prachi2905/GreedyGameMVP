@@ -11,25 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.data.assignment.Model.Children;
 import com.data.assignment.R;
 import com.data.assignment.databinding.ImageUploadUiBinding;
+import com.data.imageloaderlib.ImageLoader;
 
 import java.util.List;
 
 
 public class ImageLoadAdapter extends RecyclerView.Adapter<ImageLoadAdapter.ViewHolder> {
 
-    private Context context;
+    private Context mContext;
     private List<Children> dataList;
 
 
-    public ImageLoadAdapter(Context context, List<Children> dataList) {
-        this.context = context;
+    public ImageLoadAdapter(Context mContext, List<Children> dataList) {
+        this.mContext = mContext;
         this.dataList = dataList;
     }
 
-    public void update(List<Children> dataList) {
-        this.dataList.addAll(dataList);
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
@@ -40,6 +37,7 @@ public class ImageLoadAdapter extends RecyclerView.Adapter<ImageLoadAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ImageLoader.Companion.with(mContext).load(holder.imageUploadUiBinding.imageView, dataList.get(position).getData().getPreview().getImages().get(0).getSource().getUrl());
     }
 
     @Override

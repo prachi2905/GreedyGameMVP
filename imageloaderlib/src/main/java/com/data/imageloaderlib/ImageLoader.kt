@@ -1,4 +1,4 @@
-package `in`.appybot.miidemo.image_loader
+package com.data.imageloaderlib
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,9 +10,9 @@ import java.util.Collections.synchronizedMap
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class ImageLoader (context: Context)  {
+class ImageLoader(context: Context) {
 
-    private val maxCacheSize: Int = (Runtime.getRuntime().maxMemory() / 1024).toInt()/8
+    private val maxCacheSize: Int = (Runtime.getRuntime().maxMemory() / 1024).toInt() / 8
     private val memoryCache: LruCache<String, Bitmap>
 
     private val executorService: ExecutorService
@@ -81,7 +81,7 @@ class ImageLoader (context: Context)  {
     }
 
     @Synchronized
-    private  fun loadImageIntoImageView(imageView: ImageView, bitmap: Bitmap?, imageUrl: String) {
+    private fun loadImageIntoImageView(imageView: ImageView, bitmap: Bitmap?, imageUrl: String) {
 
         require(bitmap != null) {
             "ImageLoader:loadImageIntoImageView - Bitmap should not be null"
@@ -90,7 +90,9 @@ class ImageLoader (context: Context)  {
         val scaledBitmap = Utils.scaleBitmapForLoad(bitmap, imageView.width, imageView.height)
 
         scaledBitmap?.let {
-            if(!isImageViewReused(ImageRequest(imageUrl, imageView))) imageView.setImageBitmap(scaledBitmap)
+            if (!isImageViewReused(ImageRequest(imageUrl, imageView))) imageView.setImageBitmap(
+                scaledBitmap
+            )
         }
     }
 
@@ -104,7 +106,11 @@ class ImageLoader (context: Context)  {
 
     inner class DisplayBitmap(private var imageRequest: ImageRequest) : Runnable {
         override fun run() {
-            if(!isImageViewReused(imageRequest)) loadImageIntoImageView(imageRequest.imageView, checkImageInCache(imageRequest.imgUrl), imageRequest.imgUrl)
+            if (!isImageViewReused(imageRequest)) loadImageIntoImageView(
+                imageRequest.imageView,
+                checkImageInCache(imageRequest.imgUrl),
+                imageRequest.imgUrl
+            )
         }
     }
 
@@ -114,12 +120,12 @@ class ImageLoader (context: Context)  {
 
         override fun run() {
 
-            if(isImageViewReused(imageRequest)) return
+            if (isImageViewReused(imageRequest)) return
 
             val bitmap = Utils.downloadBitmapFromURL(imageRequest.imgUrl)
             memoryCache.put(imageRequest.imgUrl, bitmap)
 
-            if(isImageViewReused(imageRequest)) return
+            if (isImageViewReused(imageRequest)) return
 
             val displayBitmap = DisplayBitmap(imageRequest)
             handler.post(displayBitmap)
